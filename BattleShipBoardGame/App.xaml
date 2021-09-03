@@ -1,0 +1,14 @@
+﻿<Application x:Class="BattleShipBoardGame.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:BattleShipBoardGame"
+             xmlns:views="clr-namespace:BattleShipBoardGame.Views"
+             xmlns:viewModels="clr-namespace:BattleShipBoardGame.ViewModels"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <DataTemplate
+             DataType="{x:Type viewModels:GameViewModel}">
+            <views:GameView/>
+        </DataTemplate>
+    </Application.Resources>
+</Application>
