@@ -27,16 +27,18 @@ namespace BattleShipBoardGame.Views
         private void ocean_DragOver(object sender, DragEventArgs e)
         {
             object data = e.Data.GetData(DataFormats.Serializable);
-            if (data is Boat)
+            if (data is Boat boat)
             {
-                var boat = (Boat)data;
                 Point dropPosition = e.GetPosition(ocean);
                 var calculatedPoint = GetCalculatedPoint(dropPosition);
                 Canvas.SetLeft(boat, calculatedPoint.X);
                 Canvas.SetTop(boat, calculatedPoint.Y);
+                
                 if (!ocean.Children.Contains(boat))
                 {
-                    harbour.Children.Remove(boat);
+                    var gameViewModel = (GameViewModel)DataContext;
+
+                    gameViewModel.RemoveBoatCommand.Execute(boat);
                     ocean.Children.Add(boat);
                 }
             }
@@ -62,9 +64,9 @@ namespace BattleShipBoardGame.Views
             {
                 var left = Canvas.GetLeft(boat);
                 var top = Canvas.GetTop(boat);
-                var point = ConvertToPoint(left, top);
+                boat.Point = ConvertToPoint(left, top);
                 var viewModel = (GameViewModel)DataContext;
-                viewModel.DropBoatCommand.Execute(null);
+                viewModel.DropBoatCommand.Execute(boat);
             }
         }
 

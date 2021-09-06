@@ -7,11 +7,11 @@ using System.Windows.Input;
 
 namespace BattleShipBoardGame.Commands
 {
-    public class DropBoatCommand : ICommand
+    public class RemoveBoatCommand : ICommand
     {
         private GameViewModel gameViewModel;
 
-        public DropBoatCommand(GameViewModel gameViewModel)
+        public RemoveBoatCommand(GameViewModel gameViewModel)
         {
             this.gameViewModel = gameViewModel;
         }
@@ -23,6 +23,7 @@ namespace BattleShipBoardGame.Commands
         public void Execute(object parameter)
         {
             var boat = (Boat)parameter;
+            gameViewModel.Harbour.Remove(boat);
         }
     }
 }

@@ -22,9 +22,9 @@ namespace BattleShipBoardGame.ViewModels
         {
             Ships = new ObservableCollection<Ship>()
             {
-                new Battleship(),
-                new Submarine(),
-                new Cruiser(),
+                //new Battleship(),
+                //new Submarine(),
+                //new Cruiser(),
 
             };
         }
