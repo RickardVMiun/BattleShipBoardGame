@@ -6,7 +6,7 @@ namespace BattleShipBoardGame.ViewModels
     {
         public Submarine()
         {
-            Size = 8;
+            Size = 2;
         }
     }
 

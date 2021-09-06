@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Drawing;
+using System.Linq;
 using System.Text;
 
 namespace BattleShipBoardGame.ViewModels
@@ -17,6 +18,30 @@ namespace BattleShipBoardGame.ViewModels
 
         public int Hits { get; protected set; } = 0;
 
+        public bool IsSunk => IsShipSunk();
+
+        private bool IsShipSunk()
+        {
+            return Hits >= Size;
+        }
+
+        public Status UnderAttack(Point point)
+        {
+            if (IsHit(point))
+            {
+                Hits++;
+            }
+            else
+            {
+               return Status.Miss;
+            }
+            return IsSunk ? Status.Sunk : Status.Hit;
+        }
+
+        private bool IsHit(Point point)
+        {
+            return Coordinates.Any(s => s.X == point.X && s.Y == point.Y);
+        }
 
         public void SetCoordinates(Point startPoint)
         {
