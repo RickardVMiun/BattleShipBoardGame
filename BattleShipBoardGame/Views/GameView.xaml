@@ -48,12 +48,21 @@
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
             </ItemsControl>
-            <StackPanel x:Name="harbour" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left">
-                <local:Boat Size="2" />
-                <local:Boat Size="3" />
-            </StackPanel>
-            
-            
+            <!--<StackPanel x:Name="harbour" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left">
+                <local:Submarine />
+                <local:Carrier />
+                
+            </StackPanel>-->
+
+            <ItemsControl ItemsSource="{Binding Harbour}" Grid.Column="1" Grid.Row="2">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+
+
             <!--<Button Grid.Column="0" Grid.Row="1" Command="{Binding PlaceShipRandomlyCommand}" Content="Placera båtar" Width="150" Height="50"/>-->
         </Grid>
             
